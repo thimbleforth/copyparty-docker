@@ -9,6 +9,9 @@ services:
     volumes:
       - ${STORAGEDIR}:/home/nonroot/data:rw
 
+    environment:
+      - PRTY_CONFIG=${PRTY_CONFIG}
+
     ports:
       - "3923:3923"
 
