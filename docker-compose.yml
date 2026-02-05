@@ -1,0 +1,24 @@
+services:
+  copyparty:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: copyparty
+    restart: unless-stopped
+
+    volumes:
+      - ${STORAGEDIR}:/home/nonroot/data:rw
+
+    ports:
+      - "3923:3923"
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+    tmpfs:
+      - /tmp
+
+    user: "65532:65532"
